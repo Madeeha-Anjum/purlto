@@ -8,7 +8,7 @@ import YAML from "yamljs";
 import cors from "cors";
 
 import config, { NODE_ENV } from "./config";
-import apiDevRouter from "./routes/api.dev.router";
+import apiDevRouter from "./routes/apiDev.router";
 import slugRouter from "./routes/slug.router";
 import apiRouter from "./routes/api.router";
 
@@ -52,7 +52,10 @@ const createApp = () => {
     );
   });
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecification));
-  app.use("/api/v1/dev", apiDevRouter);
+  if (config.nodeEnv !== NODE_ENV.PRODUCTION) {
+    // don't expose the api dev routes in production
+    app.use("/api/v1/dev", apiDevRouter);
+  }
   app.use("/api/v1", apiRouter);
   app.use(slugRouter);
 

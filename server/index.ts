@@ -1,13 +1,9 @@
 import "dotenv/config";
-import generalConfig from "./src/configs/general.config";
+import config from "./src/config";
 import createApp from "./src/app";
 import db from "./src/db";
 
-const port = generalConfig.port;
-
-console.log(
-  `generalConfig.urlExpirationTime: ${generalConfig.urlExpirationTime}`
-);
+const port = config.serverPort;
 
 // force: true will drop the tables, and recreate if it already exists
 db.sync({ force: true })
@@ -17,7 +13,7 @@ db.sync({ force: true })
   .then(() => {
     const app = createApp();
     app.listen(port, () => {
-      console.log(`🌿 NODE_ENV: ${generalConfig.nodeEnv}`);
+      console.log(`🌿 NODE_ENV: ${config.nodeEnv}`);
       console.log(`🚀 Server started on http://localhost:${port}`);
     });
   });

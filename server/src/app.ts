@@ -7,7 +7,7 @@ import helmet from "helmet";
 import YAML from "yamljs";
 import cors from "cors";
 
-import generalConfig, { NODE_ENV } from "./configs/general.config";
+import config, { NODE_ENV } from "./config";
 import apiDevRouter from "./routes/api.dev.router";
 import slugRouter from "./routes/slug.router";
 import apiRouter from "./routes/api.router";
@@ -41,8 +41,8 @@ const createApp = () => {
 
   // logger which also logs the request body
   morganBody(app, {
-    // skip logging if we're testing
-    skip: (req, res) => generalConfig.nodeEnv === NODE_ENV.TEST,
+    // skip logging if show logs is false
+    skip: (req, res) => !config.showLogs,
   });
 
   // add all the main api routes

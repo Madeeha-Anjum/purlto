@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 
 import { Url } from "../models/url";
 import { generateSlug } from "../utils/slug.util";
-import generalConfig from "../configs/general.config";
+import config from "../config";
 
 const apiRouter = Router();
 
@@ -14,7 +14,7 @@ apiRouter.post("/shorten", async (req: Request, res: Response) => {
 
   const url = {
     slug: String(slug),
-    expires: dayjs().add(generalConfig.urlExpirationTime, "second").toDate(),
+    expires: dayjs().add(config.urlExpirationTime, "second").toDate(),
     longUrl,
   };
 

@@ -7,7 +7,7 @@
     "start": "ts-node-dev index.ts",
     "build": "tsc",
     "start-dist": "node build/index.js",
-    "//": "jest runInBand option runs all tests serially rather than in parallel. Set this option because many tests interact with the database",
+    "//": "jest usually runs tests in parallel, since the tests interact with the database we need them to run serially, this is what the --runInBand option does",
     "test": "jest --runInBand"
   },
   "keywords": [],

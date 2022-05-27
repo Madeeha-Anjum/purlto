@@ -42,7 +42,7 @@ const createApp = () => {
   // logger which also logs the request body
   morganBody(app, {
     // skip logging if show logs is false
-    skip: (req, res) => !config.showLogs,
+    skip: (req, res) => !config.SHOW_LOGS,
   });
 
   // add all the main api routes
@@ -52,7 +52,7 @@ const createApp = () => {
     );
   });
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecification));
-  if (config.nodeEnv !== NODE_ENV.PRODUCTION) {
+  if (config.NODE_ENV !== NODE_ENV.PRODUCTION) {
     // don't expose the api dev routes in production
     app.use("/api/v1/dev", apiDevRouter);
   }

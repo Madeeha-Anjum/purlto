@@ -14,7 +14,7 @@ apiRouter.post("/shorten", async (req: Request, res: Response) => {
 
   const url = {
     slug: String(slug),
-    expires: dayjs().add(config.urlExpirationTime, "second").toDate(),
+    expires: dayjs().add(config.URL_EXPIRATION_TIME, "second").toDate(),
     longUrl,
   };
 

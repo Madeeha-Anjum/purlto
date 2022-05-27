@@ -1,11 +1,16 @@
 import { Sequelize } from "sequelize";
 import config from "./config";
 
-const db = new Sequelize(config.db.dbName, config.db.user, config.db.password, {
-  host: config.db.host,
-  port: config.db.port,
-  dialect: "mysql",
-  logging: config.db.showSequelizeLogging,
-});
+const db = new Sequelize(
+  config.DB.DB_NAME,
+  config.DB.USER,
+  config.DB.PASSWORD,
+  {
+    host: config.DB.HOST,
+    port: config.DB.PORT,
+    dialect: "mysql",
+    logging: config.DB.SHOW_SEQUELIZE_LOGS,
+  }
+);
 
 export default db;

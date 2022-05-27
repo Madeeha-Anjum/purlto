@@ -1,18 +1,18 @@
 import { getRequiredEnv } from "./utils/helpers.util";
 
 const generateConfig = () => ({
-  nodeEnv: getNodeEnv("NODE_ENV"),
-  serverPort: getRequiredEnv("PORT"),
-  showLogs: getNodeEnv("NODE_ENV") !== NODE_ENV.TEST,
-  urlExpirationTime: Number(getRequiredEnv("URL_EXPIRATION_TIME")),
-  db: {
-    host: getRequiredEnv("MYSQL_HOST"),
-    port: Number(getRequiredEnv("MYSQL_PORT")),
-    user: getRequiredEnv("MYSQL_USER"),
-    password: getRequiredEnv("MYSQL_PASSWORD"),
-    dbName: getRequiredEnv("MYSQL_DB"),
+  NODE_ENV: getNodeEnv("NODE_ENV"),
+  SERVER_PORT: getRequiredEnv("PORT"),
+  SHOW_LOGS: getNodeEnv("NODE_ENV") !== NODE_ENV.TEST,
+  URL_EXPIRATION_TIME: Number(getRequiredEnv("URL_EXPIRATION_TIME")),
+  DB: {
+    HOST: getRequiredEnv("MYSQL_HOST"),
+    PORT: Number(getRequiredEnv("MYSQL_PORT")),
+    USER: getRequiredEnv("MYSQL_USER"),
+    PASSWORD: getRequiredEnv("MYSQL_PASSWORD"),
+    DB_NAME: getRequiredEnv("MYSQL_DB"),
     // determines if we should show sequelize logs
-    showSequelizeLogging: getNodeEnv("NODE_ENV") !== NODE_ENV.TEST,
+    SHOW_SEQUELIZE_LOGS: getNodeEnv("NODE_ENV") !== NODE_ENV.TEST,
   },
 });
 

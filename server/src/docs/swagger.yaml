@@ -1,0 +1,116 @@
+openapi: "3.0.2"
+info:
+  title: Push To Site Server
+  version: "1.0"
+servers:
+  - url: http://localhost:5000
+paths:
+  /api/v1/shorten:
+    post:
+      summary: Shortens a url
+      operationId: shorten_url
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The url you want to shorten
+              example:
+                url: "http://google.com"
+      responses:
+        "201":
+          description: A url record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UrlRecord"
+  /{slug}:
+    get:
+      summary: Redirect to long url
+      operationId: get_slug
+      parameters:
+        - name: slug
+          in: path
+          description: Slug of the url
+          required: true
+          schema:
+            type: string
+            example: aaaaa
+      responses:
+        "302":
+          description: Redirect to long url
+          content:
+            application/json:
+              schema:
+                type: string
+        "404":
+          description: Slug not found
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /api/v1/dev/urls:
+    get:
+      summary: Get all urls
+      operationId: get_urls
+      responses:
+        "200":
+          description: A list of url records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UrlRecord"
+  /api/v1/dev/reset:
+    delete:
+      summary: Reset the database
+      operationId: reset_database
+      responses:
+        "200":
+          description: Database reset
+          content:
+            application/json:
+              schema:
+                type: string
+  /docs:
+    get:
+      summary: Swagger UI
+      operationId: swagger_ui
+      responses:
+        "200":
+          description: Swagger UI
+          content:
+            text/html:
+              schema:
+                type: string
+components:
+  schemas:
+    UrlRecord:
+      type: object
+      properties:
+        slug:
+          type: string
+          description: The slug of the url, it can also be considered its id
+        longUrl:
+          type: string
+          description: The long url of the url record
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the url record was created
+        expires:
+          type: string
+          format: date-time
+          description: The date and time the url record expires
+      example:
+        slug: aaaaa
+        longUrl: https://www.google.com
+        createdAt: "2020-01-01T00:00:00.000Z"
+        updatedAt: "2020-01-01T00:00:00.000Z"
+        expires: "2020-01-01T00:00:00.000Z"

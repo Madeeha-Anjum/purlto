@@ -1,3 +1,22 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;800&family=Raleway:ital,wght@0,100;0,500;0,800;1,300&display=swap');
+
+@layer base {
+  :root {
+    --indigo: 79 137 165; /* #4F89A5 */
+    --steel-blue: 72 54 163; /* #4836A3 */
+    --cool-grey: 254, 254, 255; /* #F4F4FF */
+    /* --ash-grey: 80, 80, 80; #505050  */
+  }
+
+  body {
+    font-family: 'Nunito Sans';
+    line-height: 1.5;
+    color: rgb(var(--cool-grey));
+    font-size: 1rem;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+}

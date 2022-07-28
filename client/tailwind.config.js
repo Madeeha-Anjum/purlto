@@ -23,7 +23,6 @@ module.exports = {
 
     extend: {
       colors: {
-        // create or override colors and allow opacity
         indigo: 'rgb(var(--indigo) / <alpha-value>)',
         'steel-blue': 'rgb(var(--steel-blue) / <alpha-value>)',
         'cool-grey': 'rgb(var(--cool-grey) / <alpha-value>)',

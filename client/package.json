@@ -8,10 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
     "axios": "^0.27.2",
->>>>>>> 9c535abaecb40a503bf801308ee94181a9e135c1
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },

@@ -3,13 +3,8 @@
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;800&family=Raleway:ital,wght@0,100;0,500;0,800;1,300&display=swap');
 
-/*
-starting colors:
-
-blue: #4f89a5 - 79 137 165
-purple: #4836a3 - 72 54 163
-*/
-
+ 
+ 
 @layer base {
   :root {
     --indigo-purple: 72 54 163; /* #4836A3 */ 
@@ -27,4 +22,37 @@ purple: #4836a3 - 72 54 163
     font-weight: 400;
     overflow-x: hidden;
   }
+}
+
+@layer components {
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  .loader::after {
+    content: '';  
+    position: absolute;
+    box-sizing: border-box;
+    left: 20px;
+    top: 31px;
+    border: 10px solid transparent;
+    border-right-color: #FFF;
+    transform: rotate(-40deg);
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 
 }

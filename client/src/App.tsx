@@ -6,21 +6,37 @@ function App() {
   const [userInput, setUserInput] = useState('');
   const [shortenedUrl, setShortenedUrl] = useState('');
 
+  const [isLoading, setIsLoading] = useState(false);
+
+  const delay = (time: number) => {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        return resolve();
+      }, time);
+    });
+  };
+
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(e.target.value);
   };
 
-  const onSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(userInput);
-    axios
-      .post('http://localhost:5000/api/v1/shorten', {
-        url: userInput,
-      })
-      .then((res) => {
-        setShortenedUrl(res.data.slug);
-      });
-    setUserInput('');
+    setIsLoading(true);
+
+    await delay(1000);
+
+    setIsLoading(false);
+
+    // axios
+    //   .post('http://localhost:5000/api/v1/shorten', {
+    //     url: userInput,
+    //   })
+    //   .then((res) => {
+    //     setShortenedUrl(res.data.slug);
+    //   });
+    // setUserInput('');
   };
 
   return (
@@ -50,8 +66,13 @@ function App() {
                       onChange={onInputChange}
                       value={userInput}
                     />
-                    <button className='m-1 shadow-inner bg-gradient-to-r from-[#7be5c9] via-[#7ec5bb]  to-[#0e9c97] rounded-xl   px-8 text-center'>
-                      <span className='text-white'>PUSH</span>
+                    <button className='flex items-center m-1 shadow-inner bg-gradient-to-r from-[#7be5c9] via-[#7ec5bb]  to-[#0e9c97] rounded-xl px-8 text-center'>
+                      {isLoading && (
+                        <div className='-ml-4 scale-50'>
+                          <span className=' loader'></span>
+                        </div>
+                      )}
+                      <div className='flex-grow text-white'>PUSH</div>
                     </button>
                   </div>
                 </form>

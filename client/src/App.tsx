@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import Copy from './components/icons/Copy';
 
 function App() {
   const [userInput, setUserInput] = useState('');
@@ -31,12 +32,14 @@ function App() {
       </section>
 
       <section className='flex flex-col flex-1 w-full'>
-        <div className='px-2 my-auto sm:px-4'>
+        <div className='relative px-2 my-auto sm:px-4'>
           {/* Shorten URL */}
-          <div className='mx-auto max-w-7xl'>
-            <h1 className='text-center text-site-name'>Pushto.site</h1>
-
+          <section className='mx-auto max-w-7xl'>
             <div className='sm:px-28'>
+              <h1 className='text-center break-words text-site-name'>
+                Pushto.site
+              </h1>
+
               <form className='sm:flex ' onSubmit={onSubmit}>
                 <input
                   className='w-full text-black '
@@ -50,11 +53,18 @@ function App() {
                 </button>
               </form>
             </div>
-          </div>
+          </section>
           {/* Copy URL */}
-          <div className=''>
-            <span>{`http://localhost:5000/${shortenedUrl}`}</span>
-          </div>
+          <section className='absolute left-0 right-0 max-w-xs p-2 mx-auto text-center -bottom-40 sm:p-4'>
+            <button className='w-full p-2 border active:scale-90 sm:px-8 bg-blue-200/30 rounded-3xl border-cool-grey'>
+              <span className='space-x-5 text-center sm:flex sm:justify-between sm:items-center'>
+                <div className='p-2 break-words'>
+                  http://localhost:5000/{shortenedUrl}
+                </div>
+                <Copy className='inline-block h-6 fill-white' />
+              </span>
+            </button>
+          </section>
         </div>
       </section>
 

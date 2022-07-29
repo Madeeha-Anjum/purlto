@@ -86,6 +86,7 @@ function App() {
           </nav>
         </footer>
       </section>
+      <span className='bubble w-9 h-9 bg-red-900 rounded-3xl '></span>
     </main>
   );
 }

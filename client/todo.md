@@ -5,9 +5,9 @@
 - [x] Input styling
 - [x] update bg colors
 - [x] Heading styling
-- [ ] Button styling
-- [ ] Button animation
+- [x] Button styling
 - [ ] loading animation
+- [ ] Button animation
 - [ ] Button animation logic
 - [ ] is loading delay
 

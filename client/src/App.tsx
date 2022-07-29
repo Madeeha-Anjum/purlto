@@ -44,14 +44,14 @@ function App() {
                 <form onSubmit={onSubmit}>
                   <div className='flex border shadow-inner rounded-xl bg-black/10 backdrop-opacity-40 backdrop-blur-3xl backdrop-brightness-200 border-cool-grey/20'>
                     <input
-                      className='w-full p-5 text-white bg-transparent focus:outline-none placeholder:text-white/60'
+                      className='flex-grow w-full p-5 text-white bg-transparent focus:outline-none placeholder:text-white/60'
                       type='text'
                       placeholder='Paste your URL'
                       onChange={onInputChange}
                       value={userInput}
                     />
-                    <button className='w-full m-1 bg-green-300 border-green-200 rounded-xl sm:w-2/12 '>
-                      <span className='text-white '>PUSH</span>
+                    <button className='m-1 shadow-inner bg-gradient-to-r from-[#7be5c9] via-[#7ec5bb]  to-[#0e9c97] rounded-xl   px-8 text-center'>
+                      <span className='text-white'>PUSH</span>
                     </button>
                   </div>
                 </form>

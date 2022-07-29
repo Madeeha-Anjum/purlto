@@ -26,8 +26,9 @@ function App() {
     setIsLoading(true);
 
     await delay(1000);
-
     setIsLoading(false);
+
+    // setIsLoading(false);
 
     // axios
     //   .post('http://localhost:5000/api/v1/shorten', {
@@ -60,13 +61,17 @@ function App() {
                 <form onSubmit={onSubmit}>
                   <div className='flex border shadow-inner rounded-xl bg-black/10 backdrop-opacity-40 backdrop-blur-3xl backdrop-brightness-200 border-cool-grey/20'>
                     <input
-                      className='flex-grow w-full p-5 text-white bg-transparent focus:outline-none placeholder:text-white/60'
+                      className='flex-grow w-20 p-5 text-white bg-transparent focus:outline-none placeholder:text-white/60'
                       type='text'
                       placeholder='Paste your URL'
                       onChange={onInputChange}
                       value={userInput}
                     />
-                    <button className='flex items-center m-1 shadow-inner bg-gradient-to-r from-[#7be5c9] via-[#7ec5bb]  to-[#0e9c97] rounded-xl px-8 text-center'>
+                    <button
+                      className={`${
+                        isLoading && 'focus:w-full'
+                      } w-1/4 transition-all duration-1000 flex items-center m-1 shadow-inner bg-gradient-to-r from-[#7be5c9] via-[#7ec5bb]  to-[#0e9c97] rounded-xl px-8 text-center`}
+                    >
                       {isLoading && (
                         <div className='-ml-4 scale-50'>
                           <span className=' loader'></span>
@@ -79,7 +84,7 @@ function App() {
               </div>
             </section>
             {/* Copy URL */}
-            <section className='invisible max-w-xs p-2 py-5 mx-auto text-center sm:p-4'>
+            <section className='max-w-xs p-2 py-5 mx-auto text-center sm:p-4'>
               <button className='w-full p-2 border active:scale-90 sm:px-8 bg-blue-200/30 rounded-3xl border-cool-grey'>
                 <span className='space-x-5 text-center sm:flex sm:justify-between sm:items-center'>
                   <div className='p-2 break-words'>

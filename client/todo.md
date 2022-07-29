@@ -7,10 +7,10 @@
 - [x] Heading styling
 - [x] Button styling
 
-- [ ] loading animation
+- [x] loading animation
 - [ ] Button animation
 - [ ] Button animation logic
-- [ ] is loading delay
+- [x] is loading delay
 - [ ] Copy
 
 - [ ] organize code

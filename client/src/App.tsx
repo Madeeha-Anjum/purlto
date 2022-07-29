@@ -24,69 +24,77 @@ function App() {
   };
 
   return (
-    <main className='flex flex-col items-center min-h-screen bg-gradient-to-bl to-indigo from-steel-blue'>
-      <section className='w-full pt-8'>
-        <div className='px-2 sm:px-4 max-w-7xl'>
-          <h1 className='text-3xl font-semibold break-words'>Pushto.site</h1>
-        </div>
-      </section>
+    <main className='bg-gradient-to-bl via-indigo-blue to-steel-blue from-indigo-purple'>
+      <div className='relative flex flex-col items-center min-h-screen overflow-clip'>
+        <section className='w-full pt-8'>
+          <div className='px-2 sm:px-4 max-w-7xl'>
+            <h1 className='text-3xl font-semibold break-words'>Pushto.site</h1>
+          </div>
+        </section>
 
-      <section className='flex flex-col flex-1 w-full'>
-        <div className='relative px-2 my-auto sm:px-4'>
-          {/* Shorten URL */}
-          <section className='mx-auto max-w-7xl'>
-            <div className='sm:px-28'>
-              <h1 className='text-center break-words text-site-name'>
-                Pushto.site
-              </h1>
+        <section className='flex flex-col flex-1 w-full'>
+          <div className='px-2 my-auto sm:px-4'>
+            {/* Shorten URL */}
+            <section className='mx-auto max-w-7xl'>
+              <div className='sm:px-28'>
+                <h1 className='mb-10 text-center break-words text-site-name'>
+                  Pushto.site
+                </h1>
 
-              <form className='sm:flex ' onSubmit={onSubmit}>
-                <input
-                  className='w-full text-black '
-                  type='text'
-                  placeholder='Paste your URL'
-                  onChange={onInputChange}
-                  value={userInput}
-                />
-                <button className='w-full bg-green-300 border-green-200 sm:w-2/12 '>
-                  <span className='text-white '>PUSH</span>
-                </button>
-              </form>
-            </div>
-          </section>
-          {/* Copy URL */}
-          <section className='absolute left-0 right-0 max-w-xs p-2 mx-auto text-center -bottom-40 sm:p-4'>
-            <button className='w-full p-2 border active:scale-90 sm:px-8 bg-blue-200/30 rounded-3xl border-cool-grey'>
-              <span className='space-x-5 text-center sm:flex sm:justify-between sm:items-center'>
-                <div className='p-2 break-words'>
-                  http://localhost:5000/{shortenedUrl}
-                </div>
-                <Copy className='inline-block h-6 fill-white' />
-              </span>
-            </button>
-          </section>
-        </div>
-      </section>
+                <form onSubmit={onSubmit}>
+                  <div className='flex border shadow-inner rounded-xl bg-black/10 backdrop-opacity-40 backdrop-blur-3xl backdrop-brightness-200 border-cool-grey/20'>
+                    <input
+                      className='w-full p-5 text-white bg-transparent focus:outline-none placeholder:text-white/60'
+                      type='text'
+                      placeholder='Paste your URL'
+                      onChange={onInputChange}
+                      value={userInput}
+                    />
+                    <button className='w-full m-1 bg-green-300 border-green-200 rounded-xl sm:w-2/12 '>
+                      <span className='text-white '>PUSH</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </section>
+            {/* Copy URL */}
+            <section className='invisible max-w-xs p-2 py-5 mx-auto text-center sm:p-4'>
+              <button className='w-full p-2 border active:scale-90 sm:px-8 bg-blue-200/30 rounded-3xl border-cool-grey'>
+                <span className='space-x-5 text-center sm:flex sm:justify-between sm:items-center'>
+                  <div className='p-2 break-words'>
+                    http://localhost:5000/{shortenedUrl}
+                  </div>
+                  <Copy className='inline-block h-6 fill-white' />
+                </span>
+              </button>
+            </section>
+          </div>
+        </section>
 
-      <section className='px-2 sm:px-4'>
-        <footer className='pt-20 mx-auto text-xl max-w-7xl sm:text-2xl '>
-          <nav>
-            <ul className='flex flex-wrap justify-center xs:space-x-3 '>
-              <li className='p-2'>
-                <a href='#'>
-                  <span className='text-white'>Github</span>
-                </a>
-              </li>
-              <li className='p-2'>
-                <a href='#'>
-                  <span className='text-white'>Contact Us</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </footer>
-      </section>
-      <span className='bubble w-9 h-9 bg-red-900 rounded-3xl '></span>
+        <section className='px-2 sm:px-4'>
+          <footer className='pt-20 mx-auto text-xl max-w-7xl sm:text-2xl '>
+            <nav>
+              <ul className='flex flex-wrap justify-center xs:space-x-3 '>
+                <li className='p-2'>
+                  <a href='#'>
+                    <span className='text-white'>Github</span>
+                  </a>
+                </li>
+                <li className='p-2'>
+                  <a href='#'>
+                    <span className='text-white'>Contact Us</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </footer>
+        </section>
+        <span className='absolute scale-150 bg-transparent border rounded-full w-60 h-60 top-10 -right-10 border-cool-grey/10'></span>
+        <span className='absolute w-2.5 h-2.5 rounded-full bg-cool-grey/10 right-44 top-48'></span>
+        <span className='absolute w-2.5 h-2.5 rounded-full bg-cool-grey/10 left-44 top-72'></span>
+        <span className='absolute w-2.5 h-2.5 rounded-full bg-cool-grey/10 left-60 bottom-44'></span>
+        <span className='absolute w-2.5 h-2.5 rounded-full bg-cool-grey/10 right-60 bottom-32'></span>
+      </div>
     </main>
   );
 }

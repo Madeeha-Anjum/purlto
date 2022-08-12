@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import axios from 'axios';
 import Copy from './components/icons/Copy';
+import classnames from 'classnames';
 
 function App() {
   const [userInput, setUserInput] = useState('');
   const [shortenedUrl, setShortenedUrl] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(false);
 
   const delay = (time: number) => {
     return new Promise<void>((resolve) => {
@@ -28,6 +30,8 @@ function App() {
     await delay(1000);
     setIsLoading(false);
 
+    restartAnimation();
+
     // setIsLoading(false);
 
     // axios
@@ -38,6 +42,14 @@ function App() {
     //     setShortenedUrl(res.data.slug);
     //   });
     // setUserInput('');
+  };
+
+  const restartAnimation = () => {
+    requestAnimationFrame(() => {
+      setShowAnimation(true);
+    });
+
+    setShowAnimation(false);
   };
 
   return (
@@ -68,9 +80,10 @@ function App() {
                       value={userInput}
                     />
                     <button
-                      className={`${
-                        isLoading && 'focus:w-full'
-                      } w-1/4 transition-all duration-1000 flex items-center m-1 shadow-inner bg-gradient-to-r from-[#7be5c9] via-[#7ec5bb]  to-[#0e9c97] rounded-xl px-8 text-center`}
+                      className={classnames(
+                        { 'animate-push': showAnimation },
+                        `w-1/4 transition-all duration-1000 flex items-center m-1 shadow-inner bg-gradient-to-r from-[#7be5c9] via-[#7ec5bb] to-[#0e9c97] rounded-xl px-8 text-center`
+                      )}
                     >
                       {isLoading && (
                         <div className='-ml-4 scale-50'>

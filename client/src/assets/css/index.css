@@ -55,4 +55,23 @@
       transform: rotate(360deg);
     }
   } 
+
+
+  @keyframes push {
+    0% {
+      @apply w-1/4;
+    }
+
+    50% {
+      @apply w-full;
+    }
+
+    100% {
+      @apply w-1/4;
+    }
+  }
+
+  .animate-push {
+    animation: push 2s cubic-bezier(0.2,0.5,0.3,1);
+  }
 }

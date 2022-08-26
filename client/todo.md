@@ -13,8 +13,8 @@
 - [x] is loading delay
 - [ ] Copy
 
-- [ ] organize code
-- [ ] make use of layout
+- [x] organize code
+- [x] make use of layout
 - [ ] add animation to tailwind config
 - [ ] update copy css
 - [ ] update push button on small screens
@@ -24,6 +24,6 @@ organizing
 - [x] header
 - [x] footer
 - [x] main page with bg colors and bubbles
-- [ ] ShortenLinkForm
-- [ ] ShortenLinkCopyBtn
-- [ ] ShortenLink
+- [x] ShortenLinkForm
+- [x] ShortenLinkCopyBtn
+- [x] ShortenLink

@@ -16,3 +16,14 @@
 - [ ] organize code
 - [ ] make use of layout
 - [ ] add animation to tailwind config
+- [ ] update copy css
+- [ ] update push button on small screens
+
+
+organizing
+- [x] header
+- [x] footer
+- [x] main page with bg colors and bubbles
+- [ ] ShortenLinkForm
+- [ ] ShortenLinkCopyBtn
+- [ ] ShortenLink

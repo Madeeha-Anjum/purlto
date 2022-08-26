@@ -8,8 +8,8 @@
 - [x] Button styling
 
 - [x] loading animation
-- [ ] Button animation
-- [ ] Button animation logic
+- [x] Button animation
+- [x] Button animation logic
 - [x] is loading delay
 - [ ] Copy
 

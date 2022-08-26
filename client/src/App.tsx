@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import Copy from './components/icons/Copy';
+import CopyIcon from './components/icons/CopyIcon';
 import classnames from 'classnames';
 
 function App() {
@@ -31,6 +31,7 @@ function App() {
     setIsLoading(false);
 
     restartAnimation();
+    setShortenedUrl('ascsa');
 
     // setIsLoading(false);
 
@@ -82,12 +83,12 @@ function App() {
                     <button
                       className={classnames(
                         { 'animate-push': showAnimation },
-                        `w-1/4 transition-all duration-1000 flex items-center m-1 shadow-inner bg-gradient-to-r from-[#7be5c9] via-[#7ec5bb] to-[#0e9c97] rounded-xl px-8 text-center`
+                        `w-1/4 transition-all duration-1000 flex items-center m-1 shadow-inner bg-gradient-to-r from-[#7be5c9] via-[#7ec5bb] to-[#0e9c97] rounded-xl sm:px-8 text-center`
                       )}
                     >
                       {isLoading && (
-                        <div className='-ml-4 scale-50'>
-                          <span className=' loader'></span>
+                        <div className='sm:-ml-4 scale-50'>
+                          <span className='loader'></span>
                         </div>
                       )}
                       <div className='flex-grow text-white'>PUSH</div>
@@ -97,14 +98,19 @@ function App() {
               </div>
             </section>
             {/* Copy URL */}
-            <section className='max-w-xs p-2 py-5 mx-auto text-center sm:p-4'>
-              <button className='w-full p-2 border active:scale-90 sm:px-8 bg-blue-200/30 rounded-3xl border-cool-grey'>
-                <span className='space-x-5 text-center sm:flex sm:justify-between sm:items-center'>
+            <section
+              className={classnames(
+                { hidden: !shortenedUrl && false },
+                'max-w-xs p-2 py-5 mx-auto text-center sm:p-4 mt-5'
+              )}
+            >
+              <button className='w-full p-2 transition border active:scale-90 sm:px-8 bg-blue-200/30 rounded-xl bg-black/10 backdrop-opacity-40 backdrop-blur-3xl backdrop-brightness-200 border-cool-grey/20'>
+                <div className='text-center flex space-x-1 items-center'>
                   <div className='p-2 break-words'>
                     http://localhost:5000/{shortenedUrl}
                   </div>
-                  <Copy className='inline-block h-6 fill-white' />
-                </span>
+                  <CopyIcon className='w-5 fill-white' />
+                </div>
               </button>
             </section>
           </div>

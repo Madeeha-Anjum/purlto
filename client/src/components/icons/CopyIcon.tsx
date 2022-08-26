@@ -1,10 +1,8 @@
-import React from 'react';
-
-type CopyProps = {
+type CopyIconProps = {
   className?: string;
 };
 
-function Copy({ className }: CopyProps) {
+function CopyIcon({ className }: CopyIconProps) {
   return (
     <svg
       version='1.1'
@@ -26,4 +24,4 @@ function Copy({ className }: CopyProps) {
   );
 }
 
-export default Copy;
+export default CopyIcon;

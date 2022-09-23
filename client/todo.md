@@ -11,14 +11,14 @@
 - [x] Button animation
 - [x] Button animation logic
 - [x] is loading delay
-- [ ] Copy
 
 - [x] organize code
 - [x] make use of layout
+- [ ] Copy
 - [ ] add animation to tailwind config
 - [ ] update copy css
 - [ ] update push button on small screens
-
+- [ ] clean up components(Page component/utilz component) and names 
 
 organizing
 - [x] header

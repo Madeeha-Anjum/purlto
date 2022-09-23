@@ -30,7 +30,8 @@ function ShortenLinkForm(props: Props) {
       restartAnimation();
       // clear input
       setUserInput('');
-    } catch {
+    } catch (err) {
+      console.log('err', err);
       // don't clear input
       // Display error message from the backend
     } finally {

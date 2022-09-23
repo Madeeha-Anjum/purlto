@@ -1,14 +1,16 @@
-type CopyIconProps = {
+type PropTypes = {
   className?: string;
 };
 
-function CopyIcon({ className }: CopyIconProps) {
+const CopyIcon = (props: PropTypes) => {
   return (
     <svg
       version='1.1'
       id='Layer_1'
       xmlns='http://www.w3.org/2000/svg'
-      className={className}
+      className='w-5 h-5 fill-white'
+      // default className can be overwritten by using props
+      {...props}
       viewBox='0 0 460 460'
     >
       <path
@@ -22,6 +24,6 @@ function CopyIcon({ className }: CopyIconProps) {
       />
     </svg>
   );
-}
+};
 
 export default CopyIcon;

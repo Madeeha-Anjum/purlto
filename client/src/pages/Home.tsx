@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import ShortenLink from '../components/ShortenLink';
-import Layout from '../components/layout/Layout';
+import Layout from '../components/Layout';
 import Title from '../components/Title';
 type Props = {};
 

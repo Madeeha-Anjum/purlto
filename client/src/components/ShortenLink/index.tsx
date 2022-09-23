@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import classnames from 'classnames';
 import ShortenLinkCopyBtn from './ShortenLinkCopyBtn';
 import ShortenLinkForm from './ShortenLinkForm';
-type Props = {};
+import axios from 'axios';
 
-function index({}: Props) {
+function index() {
   const [shortenedUrl, setShortenedUrl] = useState('');
+  const [showCopyBtn, setShowCopyBtn] = useState(false);
 
   const delay = (time: number) => {
     return new Promise<void>((resolve) => {
@@ -16,11 +16,18 @@ function index({}: Props) {
   };
 
   const onSubmit = async (userInputUrl: string) => {
-    setShortenedUrl('');
-    // Call API to get shortened url
-    await delay(1000);
+    await axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}api/v1/shorten`, {
+        url: userInputUrl,
+      })
+      .then((res) => {
+        console.log('res', res);
+        setShortenedUrl(`${import.meta.env.VITE_BACKEND_URL}${res.data.slug}`);
+      });
+    // the catch is taken care of inside the ShortenLinkForm component
 
-    setShortenedUrl('ascsa');
+    await delay(2500);
+    setShowCopyBtn(true);
   };
 
   return (
@@ -28,7 +35,7 @@ function index({}: Props) {
       <section className='mx-auto max-w-7xl'>
         <div className='sm:px-28'>
           <ShortenLinkForm onSubmit={onSubmit} />
-          <ShortenLinkCopyBtn shortenedUrl={shortenedUrl} show={true} />
+          <ShortenLinkCopyBtn shortenedUrl={shortenedUrl} show={showCopyBtn} />
         </div>
       </section>
     </>

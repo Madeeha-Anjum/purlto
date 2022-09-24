@@ -11,8 +11,12 @@ function Layout({ children }: Props) {
       <div className='relative flex flex-col items-center min-h-screen overflow-clip'>
         <Header />
 
-        {/* Main Content */}
-        {children}
+        <section className='flex flex-col flex-1 w-full'>
+          <div className='px-2 my-auto sm:px-4'>
+            {/* center the main content  */}
+            {children}
+          </div>
+        </section>
 
         <Footer />
 

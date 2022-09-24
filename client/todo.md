@@ -14,11 +14,16 @@
 
 - [x] organize code
 - [x] make use of layout
-- [ ] Copy
+- [ ] Create error checking in the form component
+- [ ] Copy to clipboard functionality 
 - [ ] add animation to tailwind config
-- [ ] update copy css
-- [ ] update push button on small screens
-- [ ] clean up components(Page component/utilz component) and names 
+- [x] update copy css
+- [x] update push button on small screens
+- [x] clean up components(Page component/utilz component) and names 
+- [ ] footer needs links to github and form(Maybe I will do backend for this)
+- [ ] Code needs MIT license and copyright notice
+- [ ] Create Meta Tag component
+
 
 organizing
 - [x] header

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Sleep } from '../../utils';
 import ShortenLinkCopyBtn from './ShortenLinkCopyBtn';
 import ShortenLinkForm from './ShortenLinkForm';
 import axios from 'axios';
@@ -7,15 +8,10 @@ function index() {
   const [shortenedUrl, setShortenedUrl] = useState('');
   const [showCopyBtn, setShowCopyBtn] = useState(false);
 
-  const delay = (time: number) => {
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        return resolve();
-      }, time);
-    });
-  };
-
   const onSubmit = async (userInputUrl: string) => {
+    /*
+      This function is called by the child component when the user submits the form
+    */
     await axios
       .post(`${import.meta.env.VITE_BACKEND_URL}api/v1/shorten`, {
         url: userInputUrl,
@@ -24,20 +20,15 @@ function index() {
         console.log('res', res);
         setShortenedUrl(`${import.meta.env.VITE_BACKEND_URL}${res.data.slug}`);
       });
-    // the catch is taken care of inside the ShortenLinkForm component
-
-    await delay(2500);
+    // the catch is taken care of inside the child component
+    await Sleep(2500);
     setShowCopyBtn(true);
   };
 
   return (
     <>
-      <section className='mx-auto max-w-7xl'>
-        <div className='sm:px-28'>
-          <ShortenLinkForm onSubmit={onSubmit} />
-          <ShortenLinkCopyBtn shortenedUrl={shortenedUrl} show={showCopyBtn} />
-        </div>
-      </section>
+      <ShortenLinkForm onSubmit={onSubmit} />
+      <ShortenLinkCopyBtn shortenedUrl={shortenedUrl} show={showCopyBtn} />
     </>
   );
 }

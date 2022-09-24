@@ -28,12 +28,12 @@ function ShortenLinkForm(props: Props) {
     try {
       await props.onSubmit(userInput);
       restartAnimation();
-      // clear input
+      // clear the input
       setUserInput('');
     } catch (err) {
+      // don't clear the input
+      // Catch the error from the onSubmit function in the parent component
       console.log('err', err);
-      // don't clear input
-      // Display error message from the backend
     } finally {
       setIsLoading(false);
     }

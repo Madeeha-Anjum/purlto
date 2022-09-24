@@ -1,17 +1,17 @@
+import PageSection from '../components/ui/PageSection';
 import ShortenLink from '../components/ShortenLink';
-import Layout from '../components/Layout';
-import Title from '../components/Title';
-type Props = {};
+import Layout from '../components/layout';
 
-const Home = (props: Props) => {
+const Home = () => {
   return (
     <Layout>
-      <section className='flex flex-col flex-1 w-full'>
-        <div className='px-2 my-auto sm:px-4'>
-          <Title />
-          <ShortenLink />
-        </div>
-      </section>
+      <PageSection>
+        <h1 className='mb-10 text-center break-words text-site-name'>
+          Pushto.site
+        </h1>
+
+        <ShortenLink />
+      </PageSection>
     </Layout>
   );
 };

@@ -3,6 +3,7 @@ import { Sleep } from '../../utils';
 import ShortenLinkCopyBtn from './ShortenLinkCopyBtn';
 import ShortenLinkForm from './ShortenLinkForm';
 import axios from 'axios';
+import PageSection from '../ui/PageSection';
 
 function index() {
   const [shortenedUrl, setShortenedUrl] = useState('');
@@ -27,8 +28,10 @@ function index() {
 
   return (
     <>
-      <ShortenLinkForm onSubmit={onSubmit} />
-      <ShortenLinkCopyBtn shortenedUrl={shortenedUrl} show={showCopyBtn} />
+      <PageSection>
+        <ShortenLinkForm onSubmit={onSubmit} />
+        <ShortenLinkCopyBtn shortenedUrl={shortenedUrl} show={showCopyBtn} />
+      </PageSection>
     </>
   );
 }

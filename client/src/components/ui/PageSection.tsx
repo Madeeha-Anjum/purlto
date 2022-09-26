@@ -1,17 +1,8 @@
-import React from 'react';
-
-type Props = {
+type PropsType = {
   children: React.ReactNode;
 };
-
-const PageSection = (props: Props) => {
-  return (
-    <>
-      <section className='mx-auto max-w-7xl'>
-        <div className='sm:px-28'>{props.children}</div>
-      </section>
-    </>
-  );
+const PageSection = (props: PropsType) => {
+  return <section className='mx-auto max-w-7xl'>{props.children}</section>;
 };
 
 export default PageSection;

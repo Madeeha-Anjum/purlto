@@ -1,13 +1,28 @@
 import React from 'react';
+
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import './assets/css/index.css';
-import { BrowserRouter } from 'react-router-dom';
+
+import Home from './pages/Home';
+import Feedback from './pages/Feedback';
+import ErrorPage from './error-page';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/feedback',
+    element: <Feedback />,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

@@ -1,14 +1,16 @@
+import Layout from '../components/layout';
 import PageSection from '../components/ui/PageSection';
 
 const Feedback = () => {
   return (
     <>
-      <h1 className='text-xl text-red-800'>Hello world 1</h1>
-      <h1 className='text-xl text-red-800'>Hello world 1</h1>
-
-      <PageSection>
-        <h1 className='text-xl text-red-800'>Hello world</h1>
-      </PageSection>
+      <Layout>
+        <PageSection>
+          <div className='text-4xl text-black'>
+            <h1>Under Construction...</h1>
+          </div>
+        </PageSection>
+      </Layout>
     </>
   );
 };

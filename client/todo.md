@@ -23,7 +23,8 @@
 - [ ] footer needs links to github and form(Maybe I will do backend for this)
 - [ ] Code needs MIT license and copyright notice
 - [ ] Create Meta Tag component
-
+- [ ] Create SEO component
+- [ ] 404 Page needs work
 
 organizing
 - [x] header

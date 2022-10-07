@@ -1,3 +1,5 @@
+# To run this file: `docker compose -f docker-compose-prod.yaml up`
+
 version: '3.8'
 
 services:
@@ -14,12 +16,9 @@ services:
       - push-to-site-db:/var/lib/mysql
 
   server:
-    build: .
-    volumes:
-      # bind mount volume
-      - .:/server
-      # anonomyous volume
-      - /server/node_modules
+    build:
+      dockerfile: Dockerfile.prod
+      context: .
     ports: 
       - 80:${PORT}
     env_file:

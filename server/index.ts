@@ -13,6 +13,9 @@ db.sync({ force: true })
     app.listen(config.SERVER_PORT, () => {
       console.log(`🌿 NODE_ENV: ${config.NODE_ENV}`);
       console.log(
+        `🤝 Connected To Database: ${config.DB.HOST}:${config.DB.PORT}`
+      );
+      console.log(
         `🚀 Server started on http://localhost:${config.SERVER_PORT}`
       );
     });

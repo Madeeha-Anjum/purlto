@@ -25,6 +25,8 @@
 - [ ] Create Meta Tag component
 - [ ] Create SEO component
 - [ ] 404 Page needs work
+- [ ] cool animation for the 404 page
+- [ ] Cool animation if You shorten the same website
 
 organizing
 - [x] header

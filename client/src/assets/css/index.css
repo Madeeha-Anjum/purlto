@@ -1,13 +1,11 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;800&family=Raleway:ital,wght@0,100;0,500;0,800;1,300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
- 
- 
 @layer base {
   :root {
-    --indigo-purple: 72 54 163; /* #4836A3 */ 
+    --indigo-purple: 72 54 163; /* #4836A3 */
     --indigo-blue: 72 59 163; /* 483ba3 */
     --steel-blue: 79 137 165; /* #4788a3 */
     --cool-grey: 254 254 255; /* #F4F4FF */
@@ -28,7 +26,7 @@
   .loader {
     width: 48px;
     height: 48px;
-    border: 3px solid #FFF;
+    border: 3px solid #fff;
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
@@ -37,13 +35,13 @@
     animation: rotation 1s linear infinite;
   }
   .loader::after {
-    content: '';  
+    content: '';
     position: absolute;
     box-sizing: border-box;
     left: 20px;
     top: 31px;
     border: 10px solid transparent;
-    border-right-color: #FFF;
+    border-right-color: #fff;
     transform: rotate(-40deg);
   }
 
@@ -54,8 +52,7 @@
     100% {
       transform: rotate(360deg);
     }
-  } 
-
+  }
 
   @keyframes push {
     0% {
@@ -72,6 +69,6 @@
   }
 
   .animate-push {
-    animation: push 2s cubic-bezier(0.2,0.5,0.3,1);
+    animation: push 2s cubic-bezier(0.2, 0.5, 0.3, 1);
   }
 }

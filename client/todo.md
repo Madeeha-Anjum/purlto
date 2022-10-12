@@ -14,19 +14,19 @@
 
 - [x] organize code
 - [x] make use of layout
-- [ ] Create error checking in the form component
-- [ ] Copy to clipboard functionality 
-- [ ] add animation to tailwind config
+- [x] add animation to tailwind config
 - [x] update copy css
 - [x] update push button on small screens
 - [x] clean up components(Page component/utilz component) and names 
-- [ ] footer needs links to github and form(Maybe I will do backend for this)
-- [ ] Code needs MIT license and copyright notice
-- [ ] Create Meta Tag component
+- [x] Code needs MIT license and copyright notice
+- [x] 404 Page needs work
 - [ ] Create SEO component
-- [ ] 404 Page needs work
+- [ ] Create Meta Tag component
+- [ ] Copy to clipboard functionality 
+- [ ] Create error checking in the form component
 - [ ] cool animation for the 404 page
 - [ ] Cool animation if You shorten the same website
+- [ ] footer needs links to github and form(Maybe I will do backend for this)
 
 organizing
 - [x] header

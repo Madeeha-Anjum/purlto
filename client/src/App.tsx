@@ -1,16 +1,15 @@
-import { Routes, Route, Link } from 'react-router-dom';
-import Feedback from './pages/Feedback';
-import Home from './pages/Home';
-import PageNotFound from './error-page';
+import ShortenLink from './components/ShortenLink';
+import Layout from './components/layout';
 
-function App() {
+const App = () => {
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='feedback' element={<Feedback />} />
-      <Route path='*' element={<PageNotFound />} />
-    </Routes>
-  );
-}
+    <Layout>
+      <h1 className='mb-10 text-center break-words text-site-name'>
+        Pushto.site
+      </h1>
 
+      <ShortenLink />
+    </Layout>
+  );
+};
 export default App;

@@ -13,9 +13,10 @@
   }
 
   body {
+    background-color: rgb(var(--indigo-purple) / 100%);
     font-family: 'Nunito Sans';
     line-height: 1.5;
-    color: rgb(var(--cool-grey));
+    color: rgb(var(--cool-grey) / 100%);
     font-size: 1rem;
     font-weight: 400;
     overflow-x: hidden;
@@ -52,23 +53,5 @@
     100% {
       transform: rotate(360deg);
     }
-  }
-
-  @keyframes push {
-    0% {
-      @apply w-1/4;
-    }
-
-    50% {
-      @apply w-full;
-    }
-
-    100% {
-      @apply w-1/4;
-    }
-  }
-
-  .animate-push {
-    animation: push 2s cubic-bezier(0.2, 0.5, 0.3, 1);
   }
 }

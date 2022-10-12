@@ -29,7 +29,17 @@ module.exports = {
       fontFamily: {
         nunito: ['Nunito Sans', 'sans-serif'],
       },
+      animation: {
+        push: 'push 2s cubic-bezier(0.2, 0.5, 0.3, 1)',
+      },
+      keyframes: {
+        push: {
+          '0%': { width: '25%' },
+          '50%': { width: '100%' },
+          '100%': { width: '25%' },
+        },
+      },
     },
+    plugins: [],
   },
-  plugins: [],
 };

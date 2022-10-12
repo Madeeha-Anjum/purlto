@@ -1,12 +1,10 @@
-// adding type annotations
 /** @type {import('tailwindcss').Config} */
-
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontSize: {
       // mobile(320) 54px and desktop(1920) of 81px
-      'site-name': 'clamp(2.25rem, 1.6875rem + 2.8125vw, 5.0625rem)',
+      'site-name': 'clamp(2.25rem, 1.6875rem + 2.8125vw, 4.0rem)',
       xs: '.75rem',
       sm: '.875rem',
       tiny: '.875rem',
@@ -23,15 +21,25 @@ module.exports = {
 
     extend: {
       colors: {
-        // create or override colors and allow opacity
-        indigo: 'rgb(var(--indigo) / <alpha-value>)',
+        'indigo-purple': 'rgb(var(--indigo-purple) / <alpha-value>)',
+        'indigo-blue': 'rgb(var(--indigo-blue) / <alpha-value>)',
         'steel-blue': 'rgb(var(--steel-blue) / <alpha-value>)',
         'cool-grey': 'rgb(var(--cool-grey) / <alpha-value>)',
       },
       fontFamily: {
         nunito: ['Nunito Sans', 'sans-serif'],
       },
+      animation: {
+        push: 'push 2s cubic-bezier(0.2, 0.5, 0.3, 1)',
+      },
+      keyframes: {
+        push: {
+          '0%': { width: '25%' },
+          '50%': { width: '100%' },
+          '100%': { width: '25%' },
+        },
+      },
     },
+    plugins: [],
   },
-  plugins: [],
 };

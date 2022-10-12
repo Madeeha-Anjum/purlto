@@ -1,22 +1,57 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;800&family=Raleway:ital,wght@0,100;0,500;0,800;1,300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
-    --indigo: 79 137 165; /* #4F89A5 */
-    --steel-blue: 72 54 163; /* #4836A3 */
-    --cool-grey: 254, 254, 255; /* #F4F4FF */
+    --indigo-purple: 72 54 163; /* #4836A3 */
+    --indigo-blue: 72 59 163; /* 483ba3 */
+    --steel-blue: 79 137 165; /* #4788a3 */
+    --cool-grey: 254 254 255; /* #F4F4FF */
     /* --ash-grey: 80, 80, 80; #505050  */
   }
 
   body {
+    background-color: rgb(var(--indigo-purple) / 100%);
     font-family: 'Nunito Sans';
     line-height: 1.5;
-    color: rgb(var(--cool-grey));
+    color: rgb(var(--cool-grey) / 100%);
     font-size: 1rem;
     font-weight: 400;
     overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #fff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  .loader::after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    left: 20px;
+    top: 31px;
+    border: 10px solid transparent;
+    border-right-color: #fff;
+    transform: rotate(-40deg);
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }

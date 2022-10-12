@@ -7,20 +7,20 @@ const Footer = () => {
       <footer className='pt-20 mx-auto text-xl max-w-7xl sm:text-2xl '>
         <nav>
           <ul className='flex flex-wrap justify-center xs:space-x-3 '>
-            <li className='p-2 hover:opacity-90'>
+            <li className='p-2 px-4 hover:opacity-90'>
               <a
                 target='_blank'
                 href='https://github.com/Madeeha-Anjum/pushtosite'
               >
-                <div className='flex items-center space-x-1 '>
+                <div className='relative'>
                   <span className='text-white '>Github</span>
-                  <span>
+                  <span className='absolute'>
                     <ExternalLink />
                   </span>
                 </div>
               </a>
             </li>
-            <li className='p-2 hover:opacity-90'>
+            <li className='p-2 px-4 hover:opacity-90'>
               <Link to='/feedback'>Feedback</Link>
             </li>
           </ul>

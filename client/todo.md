@@ -27,7 +27,8 @@
 - [ ] cool animation for the 404 page
 - [ ] Cool animation if You shorten the same website
 - [ ] footer needs links to github and form(Maybe I will do backend for this)
-
+- [ ] Create QR code component
+  
 organizing
 - [x] header
 - [x] footer

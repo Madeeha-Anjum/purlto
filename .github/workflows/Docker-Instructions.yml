@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  CONTAINER_NAME: c_backend
+  CONTAINER_NAME: pushtosite-backend
 
 jobs:
   build-push:

@@ -80,7 +80,7 @@ jobs:
 
             # docker container port 5000
             # Vultr server port 80
-            docker run -d --name ${{ env.CONTAINER_NAME }} --network pushtosite-network -p 80:5000 ${{ env.REGISTRY }}/${{ needs.build-push.outputs.IMAGE_NAME }}:latest
+            docker run -d --name ${{ env.CONTAINER_NAME }} --env-file .env --network pushtosite-network -p 80:5000 ${{ env.REGISTRY }}/${{ needs.build-push.outputs.IMAGE_NAME }}:latest
 
             echo exit
             exit

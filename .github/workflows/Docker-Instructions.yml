@@ -47,7 +47,7 @@ jobs:
           # setting the docker tags REGISTRY/[OWNER/REPO=IMAGE_NAME]:Version
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
     outputs:
-      image: IMAGE_NAME = ${{ env.IMAGE_NAME }}
+      IMAGE_NAME: ${{ env.IMAGE_NAME }}
 
   pull-run:
     name: Pull and Run Docker Image on Vultr

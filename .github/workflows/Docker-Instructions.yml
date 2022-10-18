@@ -68,17 +68,17 @@ jobs:
 
             echo "stop the running container"
 
-            docker stop ${{ CONTAINER_NAME }}
+            docker stop ${{ env.CONTAINER_NAME }}
 
             echo "remove the container"
 
-            docker rm ${{ CONTAINER_NAME }}
+            docker rm ${{ env.CONTAINER_NAME }}
 
             echo "run the container"
 
             # docker container port 5000
             # Vultr server port 80
-            docker run -d --name ${{ CONTAINER_NAME }} --network pushtosite-network -p 80:5000 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            docker run -d --name ${{ env.CONTAINER_NAME }} --network pushtosite-network -p 80:5000 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
             echo exit
             exit

@@ -46,6 +46,8 @@ jobs:
           #   NODE_ENV=production
           # setting the docker tags REGISTRY/[OWNER/REPO=IMAGE_NAME]:Version
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+    outputs:
+      image: IMAGE_NAME = ${{ env.IMAGE_NAME }}
 
   pull-run:
     name: Pull and Run Docker Image on Vultr
@@ -63,9 +65,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             echo "pull the image"
-            echo ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
-            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            docker pull ${{ env.REGISTRY }}/${{ needs.build-push.outputs.IMAGE_NAME }}:latest
 
             echo "stop the running container"
 
@@ -79,7 +80,7 @@ jobs:
 
             # docker container port 5000
             # Vultr server port 80
-            docker run -d --name ${{ env.CONTAINER_NAME }} --network pushtosite-network -p 80:5000 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            docker run -d --name ${{ env.CONTAINER_NAME }} --network pushtosite-network -p 80:5000 ${{ env.REGISTRY }}/${{ needs.build-push.outputs.IMAGE_NAME }}:latest
 
             echo exit
             exit

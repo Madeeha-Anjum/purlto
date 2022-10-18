@@ -63,6 +63,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             echo "pull the image"
+            echo ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
             docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 

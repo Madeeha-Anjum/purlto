@@ -1,4 +1,4 @@
-name: Deploy Backend
+name: Docker-Instructions For Backend
 
 on:
   push:
@@ -55,7 +55,7 @@ jobs:
       - build-push
     steps:
       # SSH HOST, USERNAME,KEY saved in Github secrets
-      - name: SSH Command performed by walle
+      - name: SSH Command performed by
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}

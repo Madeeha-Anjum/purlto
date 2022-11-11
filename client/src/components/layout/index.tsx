@@ -8,11 +8,6 @@ type Props = {
 function Layout({ children }: Props) {
   return (
     <>
-      <div className='z-1 absolute w-full bg-green-500'>
-        <h1 className='text-xl text-center text-black'>
-          Site Under Construction
-        </h1>
-      </div>
       <main className='bg-gradient-to-bl via-indigo-blue to-steel-blue from-indigo-purple'>
         <div className='relative flex flex-col items-center min-h-screen overflow-clip'>
           <Header />

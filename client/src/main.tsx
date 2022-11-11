@@ -1,10 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from 'react-router-dom';
 import './assets/css/index.css';
 import App from './App';
 import PageNotFound from './error-page';
 import Feedback from './pages/Feedback';
+import Redirect, { loader as redirectLoader } from './pages/Redirect';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -20,8 +25,17 @@ const router = createBrowserRouter([
     element: <Feedback />,
   },
   {
-    path: '*',
+    path: '/404',
     element: <PageNotFound />,
+  },
+  {
+    path: '/:slug',
+    element: <Redirect />,
+    loader: redirectLoader,
+  },
+  {
+    path: '*',
+    element: <Navigate to='/404' />,
   },
 ]);
 

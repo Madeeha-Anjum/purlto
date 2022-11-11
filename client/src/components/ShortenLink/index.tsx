@@ -14,7 +14,7 @@ function index() {
       This function is called by the child component when the user submits the form
     */
     await axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}api/v1/shorten`, {
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/shorten`, {
         url: userInputUrl,
       })
       .then((res) => {

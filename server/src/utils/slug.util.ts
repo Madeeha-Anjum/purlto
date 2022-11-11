@@ -29,3 +29,4 @@ export function generateSlugWithNum(num: Number): string {
 
   return slugPadded;
 }
+// design goals: 5 characters long, case insensitive, map a number to this system

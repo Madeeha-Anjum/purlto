@@ -1,10 +1,10 @@
 import "dotenv/config";
-import config from "./src/config";
+import config, { NODE_ENV } from "./src/config";
 import createApp from "./src/app";
 import db from "./src/db";
 
 // force: true will drop the tables, and recreate if it already exists
-db.sync({ force: true })
+db.sync({ force: config.NODE_ENV !== NODE_ENV.PRODUCTION })
   .then(() => {
     console.log("Database synced");
   })

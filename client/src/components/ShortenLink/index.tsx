@@ -13,13 +13,13 @@ function index() {
     /*
       This function is called by the child component when the user submits the form
     */
+
     await axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/shorten`, {
         url: userInputUrl,
       })
       .then((res) => {
-        console.log('res', res);
-        setShortenedUrl(`${import.meta.env.VITE_BACKEND_URL}${res.data.slug}`);
+        setShortenedUrl(`${window.location.href}${res.data.slug}`);
       });
     // the catch is taken care of inside the child component
     await Sleep(2500);

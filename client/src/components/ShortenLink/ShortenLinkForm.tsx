@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
+import toast from 'react-hot-toast';
 
 type Props = {
   onSubmit: (userInputUrl: string) => Promise<void>;
@@ -15,17 +16,13 @@ const isValidUrl = (urlString: string) => {
 
 const validate = (url: string) => {
   // check if url is an empty string
-  // if it is, return "Required" as an error
   if (url === '') {
     return 'Required';
   }
-
   // check if url is a valid url
-  // if it is not, return "Invalid URL" as an error
   if (!isValidUrl(url)) {
     return 'Invalid URL';
   }
-
   return '';
 };
 
@@ -42,7 +39,10 @@ function ShortenLinkForm(props: Props) {
   };
 
   const restartAnimation = () => {
+    // The requestAnimationFrame() tells the browser that you wish to perform an animation and requests that the browser calls a specified function to update an animation before the next repaint.
+
     requestAnimationFrame(() => {
+      //  **before the next frame** reset the animation
       setShowAnimation(true);
     });
 
@@ -51,22 +51,20 @@ function ShortenLinkForm(props: Props) {
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    // validate the url
     if (validate(userInput)) {
       setError(validate(userInput));
       return;
     }
 
-    setIsLoading(true);
     try {
+      setIsLoading(true);
       await props.onSubmit(userInput);
+
       restartAnimation();
-      // clear the input
       setUserInput('');
     } catch (err) {
-      // don't clear the input
-      // Catch the error from the onSubmit function in the parent component
-      console.log('err', err);
+      toast.error('Something went wrong', err!);
     } finally {
       setIsLoading(false);
     }
@@ -75,7 +73,11 @@ function ShortenLinkForm(props: Props) {
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
-        <div className='flex border shadow-inner rounded-xl bg-black/10 backdrop-opacity-40 backdrop-blur-3xl backdrop-brightness-200 border-cool-grey/20'>
+        <div
+          className={classnames(
+            'flex border shadow-inner rounded-xl bg-black/10 backdrop-opacity-40 backdrop-blur-3xl backdrop-brightness-200 border-cool-grey/20'
+          )}
+        >
           <input
             className='flex-grow w-20 p-5 text-white bg-transparent focus:outline-none placeholder:text-white/60'
             type='text'
@@ -97,11 +99,12 @@ function ShortenLinkForm(props: Props) {
             <div className='flex-grow text-white'>PUSH</div>
           </button>
         </div>
-        {error && (
-          <div className='text-red-500 text-lg font-bold mt-1 animate-pulse'>
+        {/* form errors */}
+        <div className={classnames('flex-auto', { visible: !error })}>
+          <div className='m-2 h-5 w-1/2 text-red-500 text-lg font-bold '>
             {error}
           </div>
-        )}
+        </div>
       </form>
     </div>
   );

@@ -2,9 +2,10 @@
 
 ## Contributors
 
-| Name | Profile | Role
-| --- | --- | --- |
-| Madeeha Anjum | [linkedin]((https://www.linkedin.com/in/Madeeha-Anjum)) | Developer |
+| Name |  Role
+| --- |  --- |
+| [Madeeha-Anjum](https://github.com/Madeeha-Anjum) | Developer |
+| [PranavB6](https://github.com/PranavB6) | Developer |
 
 ## Setup Instructions for Frontend
 

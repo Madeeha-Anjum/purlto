@@ -25,7 +25,7 @@ slugRouter.get("/:slug", async (req: Request, res: Response) => {
     return res.status(404).send("URL not found");
   }
 
-  res.redirect(record!.longUrl);
+  res.send({ longUrl: record!.longUrl });
 });
 
 export default slugRouter;

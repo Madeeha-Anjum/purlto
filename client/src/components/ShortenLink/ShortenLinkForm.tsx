@@ -64,7 +64,7 @@ function ShortenLinkForm(props: Props) {
       restartAnimation();
       setUserInput('');
     } catch (err) {
-      toast.error('Something went wrong', err!);
+      toast.error('Something went wrong');
     } finally {
       setIsLoading(false);
     }

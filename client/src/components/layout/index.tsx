@@ -9,7 +9,7 @@ function Layout({ children }: Props) {
   return (
     <>
       <main className='bg-gradient-to-bl via-indigo-blue to-steel-blue from-indigo-purple'>
-        <div className='relative flex flex-col items-center min-h-screen overflow-clip'>
+        <div className='relative flex flex-col items-center min-h-screen overflow-hidden'>
           <Header />
 
           <section className='flex flex-col flex-1 w-full z-10'>

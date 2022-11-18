@@ -6,9 +6,11 @@ Pushto.site is a URL shortener that allows you to shorten your links and share t
 
 ## Authors
 
-- Developer  [@Madeeha-Anjum](https://github.com/Madeeha-Anjum) [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/Madeeha-Anjum)
-- Developer [@PranavB6](https://github.com/PranavB6)
-<!-- - Designer []() -->
+| Role |  GitHub/Name | Website |
+| :---: | :---: | :---: |
+| Developer | [@Madeeha-Anjum](https://github.com/Madeeha-Anjum)  | [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/Madeeha-Anjum)|
+| Developer  | [@PranavB6](https://github.com/PranavB6) |
+| Designer  | Vivian Trinh  | [![linkedin](https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://www.viviantrinh.ca)
 
 ## 🛠 Tec Stack and Tools
 

@@ -1,3 +1,4 @@
+import ExternalLink from '../icons/ExternalLink';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -27,6 +28,19 @@ function Layout({ children }: Props) {
           <span className='absolute w-2.5 h-2.5 rounded-full bg-cool-grey/10 left-44 top-72'></span>
           <span className='absolute w-2.5 h-2.5 rounded-full bg-cool-grey/10 left-60 bottom-44'></span>
           <span className='absolute w-2.5 h-2.5 rounded-full bg-cool-grey/10 right-60 bottom-32'></span>
+
+          <div className='absolute right-0 bottom-0 px-0.5 bg-white/10 '>
+            <a
+              href='https://www.viviantrinh.ca'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <span className='text-white opacity-50 text-xs flex '>
+                Design by Vivian Trinh
+                <ExternalLink className='w-3 h-3 fill-white' />
+              </span>
+            </a>
+          </div>
         </div>
       </main>
     </>

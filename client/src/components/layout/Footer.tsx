@@ -21,7 +21,7 @@ const Footer = () => {
               </a>
             </li>
             <li className='p-2 px-4 hover:opacity-90'>
-              <Link to='/feedback'>Feedback</Link>
+              {/* <Link to='/feedback'>Feedback</Link> */}
             </li>
           </ul>
         </nav>

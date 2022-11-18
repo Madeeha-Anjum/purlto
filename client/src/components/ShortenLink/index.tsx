@@ -22,14 +22,14 @@ function index() {
         setShortenedUrl(`${window.location.href}${res.data.slug}`);
       });
     // the catch is taken care of inside the child component
-    await Sleep(2500);
+    await Sleep(500);
     setShowCopyBtn(true);
   };
 
   return (
     <>
       <PageSection>
-        <ShortenLinkForm onSubmit={onSubmit} />
+        <ShortenLinkForm onSubmit={onSubmit} hideCopy={setShowCopyBtn} />
         <ShortenLinkCopyBtn shortenedUrl={shortenedUrl} show={showCopyBtn} />
       </PageSection>
     </>

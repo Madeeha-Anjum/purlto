@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 
 type Props = {
   onSubmit: (userInputUrl: string) => Promise<void>;
+  hideCopy: (showCopyBtn: boolean) => void;
 };
 
 const isValidUrl = (urlString: string) => {
@@ -84,6 +85,7 @@ function ShortenLinkForm(props: Props) {
             placeholder='Paste your URL'
             onChange={onInputChange}
             value={userInput}
+            onFocus={() => props.hideCopy(false)}
           />
           <button
             className={classnames(

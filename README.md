@@ -1,8 +1,8 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/Madeeha-Anjum/pushtosite/blob/main/MIT-LICENSE.txt)
 
-# Welcome to Pushto.site
+# Welcome to Purlto.com
 
-Pushto.site is a URL shortener that allows you to shorten your links and share them with your friends. It is a free and open source project.  
+Purlto is a URL shortener webiste that allows you to shorten your links and share them with your friends. It is a free and open source project.  
 
 ## Authors
 

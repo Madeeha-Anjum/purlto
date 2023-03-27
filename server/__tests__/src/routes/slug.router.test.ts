@@ -55,4 +55,25 @@ describe("GET /:slug", () => {
       UniqueConstraintError
     );
   });
+
+  test("it should increment the hits when the slug is accessed", async () => {
+    const testUrlRecord = {
+      longUrl: "https://www.google.com",
+      slug: "abc",
+    };
+
+    await UrlRecord.create(testUrlRecord);
+    let response;
+    response = await supertest(app).get(`/${testUrlRecord.slug}`).expect(200);
+
+    expect(response.body.hits).toBe(1);
+
+    response = await supertest(app).get(`/${testUrlRecord.slug}`).expect(200);
+
+    expect(response.body.hits).toBe(2);
+
+    response = await supertest(app).get(`/${testUrlRecord.slug}`).expect(200);
+
+    expect(response.body.hits).toBe(3);
+  });
 });

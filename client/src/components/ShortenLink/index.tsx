@@ -16,7 +16,7 @@ function index() {
 
     await axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/shorten`, {
-        url: userInputUrl,
+        longUrl: userInputUrl,
       })
       .then((res) => {
         setShortenedUrl(`${window.location.href}${res.data.slug}`);

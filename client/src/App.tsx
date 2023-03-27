@@ -6,9 +6,7 @@ const App = () => {
   return (
     <>
       <Layout>
-        <h1 className='mb-10 text-center break-words text-site-name'>
-          Pushto.site
-        </h1>
+        <h1 className='mb-10 text-center break-words text-site-name'>Purlto</h1>
         <ShortenLink />
       </Layout>
       <Toaster />

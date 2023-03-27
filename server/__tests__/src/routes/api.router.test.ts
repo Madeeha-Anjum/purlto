@@ -19,7 +19,7 @@ afterAll(async () => {
 describe("POST /api/v1/shorten", () => {
   test("it should shorten a url", async () => {
     const data = {
-      url: "https://www.google.com",
+      longUrl: "https://www.google.com",
     };
 
     const response = await supertest(app)
@@ -27,8 +27,7 @@ describe("POST /api/v1/shorten", () => {
       .send(data)
       .expect(201);
 
-    expect(response.body.longUrl).toBe(data.url);
-    expect(response.body.slug).toBeDefined();
-    expect(response.body.expires).toBeDefined();
+    expect(response.body.longUrl).toBe(data.longUrl);
+    expect(response.body.slug).toEqual(expect.any(String));
   });
 });

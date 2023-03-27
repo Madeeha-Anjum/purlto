@@ -1,12 +1,12 @@
 import { Request, Response, Router } from "express";
 
-import { Url } from "../models/url";
+import { UrlRecord } from "../models/urlRecord";
 import db from "../db";
 
 const apiDevRouter = Router();
 
-apiDevRouter.get("/urls", async (req: Request, res: Response) => {
-  const records = await Url.findAll();
+apiDevRouter.get("/entries", async (req: Request, res: Response) => {
+  const records = await UrlRecord.findAll();
 
   res.send(records);
 });

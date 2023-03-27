@@ -16,11 +16,11 @@ paths:
             schema:
               type: object
               properties:
-                url:
+                longUrl:
                   type: string
                   description: The url you want to shorten
               example:
-                url: "http://google.com"
+                longUrl: "http://google.com"
       responses:
         "201":
           description: A url record
@@ -30,7 +30,7 @@ paths:
                 $ref: "#/components/schemas/UrlRecord"
   /{slug}:
     get:
-      summary: Redirect to long url
+      summary: Get a url record by slug
       operationId: get_slug
       parameters:
         - name: slug
@@ -41,12 +41,12 @@ paths:
             type: string
             example: aaaaa
       responses:
-        "302":
-          description: Redirect to long url
+        "200":
+          description: Returns UrlRecord with longUrl
           content:
             application/json:
               schema:
-                type: string
+                $ref: "#/components/schemas/UrlRecord"
         "404":
           description: Slug not found
           content:
@@ -54,10 +54,10 @@ paths:
               schema:
                 type: string
 
-  /api/v1/dev/urls:
+  /api/v1/dev/entries:
     get:
-      summary: Get all urls
-      operationId: get_urls
+      summary: Get all url records
+      operationId: get_entries
       responses:
         "200":
           description: A list of url records
@@ -78,17 +78,6 @@ paths:
             application/json:
               schema:
                 type: string
-  /docs:
-    get:
-      summary: Swagger UI
-      operationId: swagger_ui
-      responses:
-        "200":
-          description: Swagger UI
-          content:
-            text/html:
-              schema:
-                type: string
 components:
   schemas:
     UrlRecord:
@@ -100,17 +89,26 @@ components:
         longUrl:
           type: string
           description: The long url of the url record
+        hits:
+          type: string
+          description: The number of times the url record has been accessed (via the slug)
+        lastAccessedAt:
+          type: string
+          format: date-time
+          description: The date and time the url record was last accessed
         createdAt:
           type: string
           format: date-time
           description: The date and time the url record was created
-        expires:
+        updatedAt:
           type: string
           format: date-time
-          description: The date and time the url record expires
+          description: The date and time the url record was last updated
+
       example:
         slug: aaaaa
         longUrl: https://www.google.com
+        hits: 0
+        lastAccessedAt: "2020-01-01T00:00:00.000Z"
         createdAt: "2020-01-01T00:00:00.000Z"
         updatedAt: "2020-01-01T00:00:00.000Z"
-        expires: "2020-01-01T00:00:00.000Z"

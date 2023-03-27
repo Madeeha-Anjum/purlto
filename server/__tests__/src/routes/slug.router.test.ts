@@ -1,7 +1,8 @@
 import supertest from "supertest";
 import dayjs from "dayjs";
+import { UniqueConstraintError } from "sequelize";
 
-import { Url } from "../../../src/models/url";
+import { UrlRecord } from "../../../src/models/urlRecord";
 import createApp from "../../../src/app";
 import db from "../../../src/db";
 
@@ -20,53 +21,38 @@ afterAll(async () => {
 
 describe("GET /:slug", () => {
   test("it should redirect to the long url", async () => {
-    const url = {
+    const testUrlRecord = {
       longUrl: "https://www.google.com",
       slug: "abc",
-      expires: dayjs().add(1, "day").toDate(),
     };
 
-    await Url.create(url);
+    await UrlRecord.create(testUrlRecord);
 
-    const response = await supertest(app).get(`/${url.slug}`).expect(302);
+    const response = await supertest(app)
+      .get(`/${testUrlRecord.slug}`)
+      .expect(200);
 
-    expect(response.header.location).toBe(url.longUrl);
+    expect(response.body).toMatchObject(testUrlRecord);
   });
 
   test("it should return 404 when the slug does not exist", async () => {
     await supertest(app).get("/abc").expect(404);
   });
 
-  test("it should return 404 when the slug is expired", async () => {
-    const url = {
-      longUrl: "https://www.google.com",
-      slug: "abc",
-      expires: dayjs().subtract(1, "day").toDate(),
-    };
-
-    await Url.create(url);
-
-    await supertest(app).get(`/${url.slug}`).expect(404);
-  });
-
-  test("it should return the url with the latest expiry date if there are two urls with the same slug", async () => {
+  test("it should not create two urls with the same slug", async () => {
     const urls = [
       {
         longUrl: "https://www.google.com",
         slug: "abc",
-        expires: dayjs().add(1, "hour").toDate(),
       },
       {
         longUrl: "https://nodejs.org/en/",
         slug: "abc",
-        expires: dayjs().add(1, "day").toDate(),
       },
     ];
 
-    await Url.bulkCreate(urls);
-
-    const response = await supertest(app).get(`/${urls[1].slug}`).expect(302);
-
-    expect(response.header.location).toBe(urls[1].longUrl);
+    await expect(UrlRecord.bulkCreate(urls)).rejects.toThrow(
+      UniqueConstraintError
+    );
   });
 });

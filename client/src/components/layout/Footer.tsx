@@ -12,7 +12,7 @@ const Footer = () => {
             <li className='flex-1'>
               <a
                 target='_blank'
-                href='https://github.com/Madeeha-Anjum/pushtosite'
+                href='https://github.com/Madeeha-Anjum/purlto'
                 className='hover:opacity-80 transition'
               >
                 <div className='flex justify-center outline-0'>

@@ -10,12 +10,17 @@ import App from './App';
 import PageNotFound from './error-page';
 import Feedback from './pages/Feedback';
 import Redirect, { loader as redirectLoader } from './pages/Redirect';
+import App2 from './App2';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 const router = createBrowserRouter([
+  {
+    path: '/2',
+    element: <App2 />,
+  },
   {
     path: '/',
     element: <App />,

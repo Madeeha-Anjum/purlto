@@ -1,32 +1,49 @@
 import { Link } from 'react-router-dom';
 import ExternalLink from '../icons/ExternalLink';
+import GlassContainer from '../ui/GlassContainer';
 
 const Footer = () => {
   return (
-    <section className='px-2 sm:px-4'>
-      <footer className='pt-20 mx-auto text-xl max-w-7xl sm:text-2xl '>
-        <nav>
-          <ul className='flex flex-wrap justify-center xs:space-x-3 '>
-            <li className='p-2 px-4 hover:opacity-90'>
+    <>
+      <footer className='py-2'>
+        <nav className=''>
+          <ul className='flex justify-between items-center'>
+            <li className='flex-1'></li>
+            <li className='flex-1'>
               <a
                 target='_blank'
                 href='https://github.com/Madeeha-Anjum/pushtosite'
+                className='hover:opacity-80 transition'
               >
-                <div className='relative'>
-                  <span className='text-white '>Github</span>
-                  <span className='absolute'>
-                    <ExternalLink />
-                  </span>
+                <div className='flex justify-center outline-0'>
+                  <div className='text-white text-lg'>Github</div>
+                  <ExternalLink />
                 </div>
               </a>
             </li>
-            <li className='p-2 px-4 hover:opacity-90'>
-              {/* <Link to='/feedback'>Feedback</Link> */}
+            <li className='flex-1'>
+              <div className='flex justify-end outline-none'>
+                <a
+                  href='https://www.viviantrinh.ca'
+                  target='_blank'
+                  className='transition'
+                >
+                  <GlassContainer clickable>
+                    <div className='flex p-3'>
+                      <span className='text-white text-sm'>
+                        Design by Vivian Trinh
+                      </span>
+
+                      <ExternalLink />
+                    </div>
+                  </GlassContainer>
+                </a>
+              </div>
             </li>
           </ul>
         </nav>
       </footer>
-    </section>
+    </>
   );
 };
 

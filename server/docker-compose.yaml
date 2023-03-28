@@ -11,7 +11,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       # named volume
-      - push-to-site-db:/var/lib/mysql
+      - purl-to-db:/var/lib/mysql
 
 volumes:
-  push-to-site-db:
+  purl-to-db:

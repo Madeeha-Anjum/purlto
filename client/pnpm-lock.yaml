@@ -10,6 +10,7 @@ specifiers:
   csstype: ^3.0.10
   postcss: ^8.4.19
   react: ^18.2.0
+  react-awesome-button: ^7.0.5
   react-dom: ^18.2.0
   react-hot-toast: ^2.4.0
   react-router-dom: '6'
@@ -22,6 +23,7 @@ dependencies:
   classnames: 2.3.2
   csstype: 3.1.1
   react: 18.2.0
+  react-awesome-button: 7.0.5
   react-dom: 18.2.0_react@18.2.0
   react-hot-toast: 2.4.0_owo25xnefcwdq3zjgtohz6dbju
   react-router-dom: 6.4.2_biqbaboplfbrettd7655fr4n2y
@@ -395,6 +397,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
     dev: true
+
+  /@rcaferati/wac/1.0.0:
+    resolution: {integrity: sha512-7dVbzvcfL9o4UnrCaNeoIs7Ri9Ol+OMfpYYCJJV1dfm+5+pVM6DrvFjPzqifd2ACVABpXmwTQKy9KFxNm/7IdA==}
+    dev: false
 
   /@remix-run/router/1.0.2:
     resolution: {integrity: sha512-GRSOFhJzjGN+d4sKHTMSvNeUPoZiDHWmRnXfzaxrqe7dE/Nzlc8BiMSJdLDESZlndM7jIUrZ/F4yWqVYlI0rwQ==}
@@ -1193,6 +1199,12 @@ packages:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
     dev: true
+
+  /react-awesome-button/7.0.5:
+    resolution: {integrity: sha512-pNABRQsvnbd5rGL7mX9udWa0aPnXtP6hEL90/Cqjc/ERADpOMu3z6zix+AW/NOBp0NQoi9J+hhKoZS2dabs15g==}
+    dependencies:
+      '@rcaferati/wac': 1.0.0
+    dev: false
 
   /react-dom/18.2.0_react@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}

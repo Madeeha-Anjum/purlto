@@ -1,18 +1,25 @@
-import ShortenLink from './components/ShortenLink';
-import Layout from './components/layout';
 import { Toaster } from 'react-hot-toast';
+import Footer from './components/layout/Footer';
+import Header from './components/layout/Header';
+import MainContent from './components/MainContent';
+import BackgroundBubbles from './components/ui/BackgroundBubbles';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
-      <Layout>
-        <h1 className='mb-10 text-center break-words text-site-name'>
-          Pushto.site
-        </h1>
-        <ShortenLink />
-      </Layout>
-      <Toaster />
+      <div className='relative overflow-hidden bg-gradient-to-bl via-indigo-blue to-steel-blue from-indigo-purple '>
+        <BackgroundBubbles />
+        <main className='container mx-auto min-h-screen flex flex-col px-2'>
+          <Header />
+          <section className='flex-1'>
+            <MainContent />
+          </section>
+          <Footer />
+        </main>
+        <Toaster />
+      </div>
     </>
   );
 };
+
 export default App;

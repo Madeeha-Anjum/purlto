@@ -1,7 +1,7 @@
 import supertest from "supertest";
 import dayjs from "dayjs";
 
-import { Url } from "../../src/models/url";
+import { UrlRecord } from "../../src/models/urlRecord";
 import createApp from "../../src/app";
 import db from "../../src/db";
 

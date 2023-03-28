@@ -1,9 +1,14 @@
 import supertest from "supertest";
 import dayjs from "dayjs";
 
-import { Url } from "../../../src/models/url";
+import { UrlRecord } from "../../../src/models/urlRecord";
 import createApp from "../../../src/app";
 import db from "../../../src/db";
+
+enum ENDPOINT {
+  SHORTEN = "/api/v1/shorten",
+  ENTRIES = "/api/v1/dev/entries",
+}
 
 const app = createApp();
 
@@ -27,140 +32,81 @@ afterAll(async () => {
 
 describe("GET /api/v1/dev/urls", () => {
   test("it should return 0 urls when no urls are added", async () => {
-    const response = await supertest(app).get("/api/v1/dev/urls").expect(200);
+    const response = await supertest(app).get(ENDPOINT.ENTRIES).expect(200);
     expect(response.body.length).toBe(0);
   });
 
   test("it should return 1 url when 1 url is added", async () => {
-    const url = {
+    const testUrlRecord = {
       longUrl: "https://www.google.com",
       slug: "abc",
-      expires: new Date(),
+      hits: 0,
     };
 
-    await Url.create(url);
+    await UrlRecord.create(testUrlRecord);
 
-    const response = await supertest(app).get("/api/v1/dev/urls").expect(200);
+    const response = await supertest(app).get(ENDPOINT.ENTRIES).expect(200);
 
     expect(response.body.length).toBe(1);
 
     const actualRecord = response.body[0];
 
-    expect(actualRecord).toEqual(
-      expect.objectContaining({
-        longUrl: url.longUrl,
-        slug: url.slug,
-      })
-    );
-
-    expect(areDatesClose(actualRecord.expires, url.expires)).toBe(true);
+    expect(actualRecord).toMatchObject(testUrlRecord);
   });
 
   test("it should return 2 urls when 2 urls are added", async () => {
-    const urls = [
+    const testUrlRecords = [
       {
         longUrl: "https://www.google.com",
         slug: "abc",
-        expires: new Date(),
       },
       {
         longUrl: "https://nodejs.org/en/",
         slug: "def",
-        expires: new Date(),
       },
     ];
 
-    await Url.bulkCreate(urls);
+    await UrlRecord.bulkCreate(testUrlRecords);
 
-    const response = await supertest(app).get("/api/v1/dev/urls").expect(200);
+    const response = await supertest(app).get(ENDPOINT.ENTRIES).expect(200);
 
     expect(response.body.length).toBe(2);
 
     for (let i = 0; i < response.body.length; i++) {
       const actualRecord = response.body[i];
-      const url = urls[i];
+      const testUrlRecord = testUrlRecords[i];
 
-      expect(actualRecord).toEqual(
-        expect.objectContaining({
-          longUrl: url.longUrl,
-          slug: url.slug,
-        })
-      );
-
-      expect(areDatesClose(actualRecord.expires, url.expires)).toBe(true);
+      expect(actualRecord).toMatchObject(testUrlRecord);
     }
   });
 
   test("it should return 3 urls when 3 urls are added", async () => {
-    const urls = [
+    const testUrlRecords = [
       {
         longUrl: "https://www.google.com",
         slug: "abc",
-        expires: new Date(),
       },
       {
         longUrl: "https://nodejs.org/en/",
         slug: "def",
-        expires: new Date(),
       },
       {
         longUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         slug: "ghi",
-        expires: new Date(),
       },
     ];
 
-    await Url.bulkCreate(urls);
+    await UrlRecord.bulkCreate(testUrlRecords);
 
-    const response = await supertest(app).get("/api/v1/dev/urls").expect(200);
+    const response = await supertest(app).get(ENDPOINT.ENTRIES).expect(200);
 
     expect(response.body.length).toBe(3);
 
     for (let i = 0; i < response.body.length; i++) {
       const actualRecord = response.body[i];
-      const url = urls[i];
+      const testUrlRecord = testUrlRecords[i];
 
-      expect(actualRecord).toEqual(
-        expect.objectContaining({
-          longUrl: url.longUrl,
-          slug: url.slug,
-        })
-      );
-      expect(areDatesClose(actualRecord.expires, url.expires)).toBe(true);
-    }
-  });
-
-  test("it should allow adding two urls with different expiry dates", async () => {
-    const urls = [
-      {
-        longUrl: "https://www.google.com",
-        slug: "abc",
-        expires: new Date(),
-      },
-      {
-        longUrl: "https://nodejs.org/en/",
-        slug: "abc",
-        expires: dayjs().add(1, "day").toDate(),
-      },
-    ];
-
-    await Url.bulkCreate(urls);
-
-    const response = await supertest(app).get("/api/v1/dev/urls").expect(200);
-
-    expect(response.body.length).toBe(2);
-
-    for (let i = 0; i < response.body.length; i++) {
-      const actualRecord = response.body[i];
-      const url = urls[i];
-
-      expect(actualRecord).toEqual(
-        expect.objectContaining({
-          longUrl: url.longUrl,
-          slug: url.slug,
-        })
-      );
-      expect(areDatesClose(actualRecord.expires, url.expires)).toBe(true);
+      expect(actualRecord).toMatchObject(testUrlRecord);
     }
   });
 });
@@ -170,14 +116,13 @@ describe("DELETE /api/v1/dev/reset", () => {
     const url = {
       longUrl: "https://www.google.com",
       slug: "abc",
-      expires: new Date(),
     };
 
-    await Url.create(url);
+    await UrlRecord.create(url);
 
     await supertest(app).delete("/api/v1/dev/reset").expect(200);
 
-    const response = await supertest(app).get("/api/v1/dev/urls").expect(200);
+    const response = await supertest(app).get(ENDPOINT.ENTRIES).expect(200);
 
     expect(response.body.length).toBe(0);
   });

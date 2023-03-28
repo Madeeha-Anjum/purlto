@@ -8,7 +8,8 @@ const CopyIcon = (props: PropTypes) => {
       version='1.1'
       id='Layer_1'
       xmlns='http://www.w3.org/2000/svg'
-      className='w-5 h-5 fill-white'
+      fill='currentColor'
+      className='w-5 h-5'
       // default className can be overwritten by using props
       {...props}
       viewBox='0 0 460 460'

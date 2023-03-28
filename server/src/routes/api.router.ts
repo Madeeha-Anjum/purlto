@@ -11,7 +11,7 @@ apiRouter.post("/shorten", async (req: Request, res: Response) => {
   const { longUrl } = req.body;
 
   const slug = generateSlug();
-
+  
   try {
     const record = await UrlRecord.create({
       longUrl,

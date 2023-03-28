@@ -2,8 +2,11 @@
 import anyBase from "any-base";
 // @ts-ignore: allow implicit any because this package is not typed
 import pad from "advanced-pad";
+import { UrlRecord } from "../models/urlRecord";
 
 /* Configurations */
+// design goals: 5 characters long, case insensitive, map a number to this system
+
 // The slugs will be generated based on the value of this number
 let counter = 0;
 const maxSlugNumber = 456975; // ({num of base characters}^{slug width} - 1 = (26^4 - 1) = 456975
@@ -29,4 +32,9 @@ export function generateSlugWithNum(num: Number): string {
 
   return slugPadded;
 }
-// design goals: 5 characters long, case insensitive, map a number to this system
+
+async function updateCounterToNumberOfRecordsInDatabase() {
+  counter = await UrlRecord.count();
+}
+
+updateCounterToNumberOfRecordsInDatabase();

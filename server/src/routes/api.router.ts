@@ -12,12 +12,17 @@ apiRouter.post("/shorten", async (req: Request, res: Response) => {
 
   const slug = generateSlug();
 
-  const record = await UrlRecord.create({
-    longUrl,
-    slug: String(slug),
-  });
+  try {
+    const record = await UrlRecord.create({
+      longUrl,
+      slug: String(slug),
+    });
 
-  res.status(201).send(record);
+    res.status(201).send(record);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Something went wrong when creating the record");
+  }
 });
 
 export default apiRouter;

@@ -6,9 +6,9 @@ import pad from "advanced-pad";
 /* Configurations */
 // The slugs will be generated based on the value of this number
 let counter = 0;
-const maxSlugNumber = 11881375;
+const maxSlugNumber = 456975; // ({num of base characters}^{slug width} - 1 = (26^4 - 1) = 456975
 // The number of characters in each slug
-const slugWidth = 5;
+const slugWidth = 4;
 // The characters to use in the slug
 const baseCharacters = "abcdefghijklmnopqrstuvwxyz";
 

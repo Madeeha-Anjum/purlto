@@ -1,15 +1,16 @@
-import GlassContainer from '../ui/GlassContainer';
-import { AwesomeButton } from 'react-awesome-button';
-import './awesome-button.css';
-import ChevronRightIcon from '../icons/ChevronRightIcon';
-import PusherContainer from '../pusher/PusherContainer';
-import PusherReactor from '../pusher/PusherReactor';
-import Pusher from '../pusher/Pusher';
+import GlassContainer from './ui/GlassContainer';
+
+import ChevronRightIcon from './icons/ChevronRightIcon';
+import PusherContainer from './pusher/PusherContainer';
+import PusherReactor from './pusher/PusherReactor';
+import Pusher from './pusher/Pusher';
 import { useEffect, useState } from 'react';
-import { Api } from '../../api';
-import { ShortenedLink } from '../../models/ShortenedLink';
+import { Api } from '../api';
+import { ShortenedLink } from '../models/ShortenedLink';
 import classNames from 'classnames';
 import toast from 'react-hot-toast';
+import ShortenLinkButton from './ShortenLinkForm/ShortenLinkButton';
+import ErrorMessage from './ShortenLinkForm/ErrorMessage';
 
 const pushAnimationDuration = 2000;
 
@@ -40,11 +41,11 @@ const validate = (userInput: string) => {
   return errors;
 };
 
-interface ShortenLinkForm2Props {
+interface ShortenLinkFormProps {
   addShortenedLink: (shortenedLink: ShortenedLink) => void;
 }
 
-const ShortenLinkForm2: React.FC<ShortenLinkForm2Props> = (props) => {
+const ShortenLinkForm: React.FC<ShortenLinkFormProps> = (props) => {
   const [activatePusher, setActivatePusher] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -56,10 +57,6 @@ const ShortenLinkForm2: React.FC<ShortenLinkForm2Props> = (props) => {
     const errors = validate(userInput);
     setErrorMessage(errors.userInput);
   }, [userInput, userInputTouched]);
-
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput(e.target.value);
-  };
 
   const onSubmit = async () => {
     setUserInputTouched(true);
@@ -74,8 +71,11 @@ const ShortenLinkForm2: React.FC<ShortenLinkForm2Props> = (props) => {
       const response = await Api.shortenUrl(userInput);
       console.log('response:', response);
 
+      // activate push animation
       setActivatePusher(true);
       await sleep(pushAnimationDuration);
+
+      // show new shortened link
       props.addShortenedLink(response);
     } catch (error) {
       console.log(error);
@@ -97,18 +97,14 @@ const ShortenLinkForm2: React.FC<ShortenLinkForm2Props> = (props) => {
         <PusherContainer>
           <PusherReactor activate={activatePusher}>
             <GlassContainer focusable>
-              <div className=''>
-                <div>
-                  <input
-                    type='text'
-                    className='w-full bg-transparent outline-0 p-3'
-                    placeholder='http://google.com'
-                    value={userInput}
-                    onChange={onInputChange}
-                    onBlur={() => setUserInputTouched(true)}
-                  />
-                </div>
-              </div>
+              <input
+                type='text'
+                className='w-full bg-transparent outline-0 p-3'
+                placeholder='http://google.com'
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                onBlur={() => setUserInputTouched(true)}
+              />
             </GlassContainer>
           </PusherReactor>
           <Pusher activate={activatePusher} />
@@ -131,55 +127,4 @@ const ShortenLinkForm2: React.FC<ShortenLinkForm2Props> = (props) => {
   );
 };
 
-interface ErrorMessageProps {
-  showMessage?: boolean;
-  message: string;
-}
-const ErrorMessage: React.FC<ErrorMessageProps> = (props) => {
-  return (
-    <div
-      className={classNames(
-        'mt-2 text-[#56A44C] font-bold flex items-center opacity-1',
-        {
-          'opacity-0': !props.showMessage,
-        }
-      )}
-    >
-      <ChevronRightIcon className='mr-1' />
-      {props.message}
-    </div>
-  );
-};
-
-interface ShortenLinkButton {
-  onSubmit: () => void;
-  onReset: () => void;
-  isLoading?: boolean;
-  showReset?: boolean;
-}
-
-const ShortenLinkButton: React.FC<ShortenLinkButton> = (props) => {
-  if (props.isLoading) {
-    return (
-      <AwesomeButton type='primary' disabled>
-        Loading...
-      </AwesomeButton>
-    );
-  }
-
-  if (!props.isLoading && props.showReset) {
-    return (
-      <AwesomeButton onPress={props.onReset} type='primary'>
-        Do Another One!
-      </AwesomeButton>
-    );
-  }
-
-  return (
-    <AwesomeButton onPress={props.onSubmit} type='primary'>
-      Shorten Link
-    </AwesomeButton>
-  );
-};
-
-export default ShortenLinkForm2;
+export default ShortenLinkForm;

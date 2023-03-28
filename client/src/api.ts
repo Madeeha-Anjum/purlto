@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ShortenedLink } from './models/ShortenedLink';
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL,
+  baseURL: import.meta.env.VITE_BACKEND_API_URL,
 });
 
 export class Api {

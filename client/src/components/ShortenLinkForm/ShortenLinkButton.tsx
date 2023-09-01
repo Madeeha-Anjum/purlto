@@ -58,11 +58,8 @@ const RaisedButton: React.FC<RaisedButtonProps> = (props) => {
 
 interface ShortenLinkButton {
   onSubmit: () => void;
-
   onReset: () => void;
-
   isLoading?: boolean;
-
   showReset?: boolean;
 }
 

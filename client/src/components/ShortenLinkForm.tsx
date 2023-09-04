@@ -93,7 +93,7 @@ const ShortenLinkForm: React.FC<ShortenLinkFormProps> = (props) => {
 
   return (
     <>
-      <div className='max-w-6xl mx-auto'>
+      <div className='w-full'>
         <PusherContainer>
           <PusherReactor activate={activatePusher}>
             <GlassContainer focusable>

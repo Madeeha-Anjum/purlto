@@ -15,7 +15,7 @@ const MainContent: React.FC = () => {
 
   return (
     <>
-      <div className='mt-[15%]'>
+      <div className='w-full'>
         <Title>Purlto</Title>
         <ShortenLinkForm addShortenedLink={addShortenedLink} />
         <ShortenedLinksList shortenedLinks={shortenedLinks} />

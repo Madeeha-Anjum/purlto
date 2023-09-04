@@ -3,19 +3,22 @@ import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
 import MainContent from './components/MainContent';
 import BackgroundBubbles from './components/ui/BackgroundBubbles';
+import ParticleEffect from './components/ParticleEffect';
 
 const App: React.FC = () => {
   return (
     <>
-      <div className='relative overflow-hidden bg-gradient-to-bl via-indigo-blue to-steel-blue from-indigo-purple '>
-        <BackgroundBubbles />
-        <main className='container mx-auto min-h-screen flex flex-col px-2'>
+      <div className='relative bg-gradient-to-bl via-indigo-blue to-steel-blue from-indigo-purple'>
+        <div className='absolute'>
+          <ParticleEffect />
+        </div>
+        <div className='grid grid-rows-pancake min-h-screen container mx-auto px-5'>
           <Header />
-          <section className='flex-1'>
+          <div className='flex items-center '>
             <MainContent />
-          </section>
+          </div>
           <Footer />
-        </main>
+        </div>
         <Toaster />
       </div>
     </>

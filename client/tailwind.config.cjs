@@ -39,6 +39,11 @@ module.exports = {
           '100%': { width: '25%' },
         },
       },
+      gridTemplateRows: {
+        // pancake stack layout
+        // https://web.dev/patterns/layout/pancake-stack/
+        pancake: 'auto 1fr auto',
+      },
     },
     plugins: [],
   },
